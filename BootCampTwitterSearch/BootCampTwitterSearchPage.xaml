@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		BackgroundColor="White" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:local="clr-namespace:BootCampTwitterSearch" 
+		x:Class="BootCampTwitterSearch.BootCampTwitterSearchPage">
+	
+  <ScrollView>
+		
+	<StackLayout
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            >
+	
+		<Label Text="Megsoft Xamarin BootCamp" 
+					TextColor="Navy"
+					FontSize="18"
+				VerticalOptions="Start" 
+				HorizontalOptions="FillAndExpand" 
+				HorizontalTextAlignment="Center" 
+
+				/>
+			
+		<Editor 
+		x:Name="txtSearchTerm"
+					HorizontalOptions="FillAndExpand"  
+
+				Text=""/>
+		
+
+		<Button
+			Text="Search Twittter"
+					TextColor="White"
+			HorizontalOptions="FillAndExpand"
+					BackgroundColor="Navy"
+			Clicked="OnButtonClicked"
+				/>
+
+		  <ListView x:Name="xResultsView" ItemsSource="{Binding TweetResults}">
+		    <ListView.ItemTemplate>
+		      <DataTemplate>
+				<ViewCell 
+				xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+				    <ViewCell.View>
+				        <StackLayout Orientation="Horizontal" Padding="0,0,5,5">
+							<ffimageloading:CachedImage
+								HorizontalOptions="Center" 
+								VerticalOptions="Center"
+			                    WidthRequest="48" 
+								HeightRequest="48"
+								Source="{Binding user.profile_image_url}">
+							</ffimageloading:CachedImage>
+							<StackLayout Orientation="Vertical" Padding="0,0,5,5">
+					            <Label TextColor="#194892" FontSize="11" Text="{Binding text}" Margin="5,5,5,5" />
+							 	<StackLayout Orientation="Horizontal" Padding="0,0,5,5">
+							 		<Label TextColor="Silver" FontSize="9" Text="{Binding user.name}" />
+									<Label TextColor="Silver" FontSize="9" Text="{Binding user.location}" />
+								</StackLayout>  
+							</StackLayout> 
+				        </StackLayout>                
+				    </ViewCell.View>
+				</ViewCell>
+		      </DataTemplate>
+		    </ListView.ItemTemplate>
+		  </ListView>
+
+
+		</StackLayout>
+	</ScrollView>
+	
+</ContentPage>
